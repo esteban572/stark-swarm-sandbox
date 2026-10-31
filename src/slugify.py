@@ -1,5 +1,7 @@
 """Slugify utility for the STARK sandbox (target of one supervised cloud-agent test)."""
 
+import re
+
 
 def slugify(text: str) -> str:
     """Return a URL slug for ``text``.
@@ -7,4 +9,4 @@ def slugify(text: str) -> str:
     Rules: lowercase; every run of characters that are not ASCII letters or digits becomes a single "-";
     no leading or trailing "-"; an empty or symbol-only input returns "".
     """
-    raise NotImplementedError
+    return re.sub(r"[^a-z0-9]+", "-", text.lower()).strip("-")
